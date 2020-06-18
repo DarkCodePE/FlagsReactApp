@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Country from './country';
 import { useSelector, useDispatch } from 'react-redux';
 import { showCountryList, showCountryListFilterName, showCountryListFilterRegion } from '../actions/countryAction';
+import CountrySearch from './countrySearch';
 
 const CountryListStyled = styled.div`
     display:grid;
@@ -47,16 +48,7 @@ function CountryList() {
 
     return (
         <CountryListStyled>
-            <form
-                //onSubmit={contrySearch}
-            >
-                <input 
-                    type="text"
-                    name="countryName" 
-                    onChange={onChangeCountry}
-                />
-                <input type="submit" value="buscar"/>
-            </form>
+            <CountrySearch placeholder="Search for a country" name="countryName" onChange={onChangeCountry} />
             <select name="countryRegion" onChange={onChangeRegion}>
                 <option value="America">America</option>
                 <option value="Asia">Asia</option>
