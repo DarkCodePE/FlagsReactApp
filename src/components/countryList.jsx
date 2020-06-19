@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Country from './country';
+import Country404 from './country404';
 import { useSelector, useDispatch } from 'react-redux';
 import { showCountryList } from '../actions/countryAction';
+
 
 const CountryListStyled = styled.div`
     display:grid;
@@ -14,8 +16,9 @@ const CountryListStyled = styled.div`
 function CountryList() {
 
     const countryListByName = useSelector(state => state.country.countryListByName)
-    console.log(countryListByName)
-    
+    const countryFilterState = useSelector(state => state.country.countryState)
+    console.log(countryFilterState)
+
     const CountryList = useSelector((state) =>{
         if(countryListByName.length > 0){
             return state.country.countryListByName
@@ -38,6 +41,10 @@ function CountryList() {
     return (
         <CountryListStyled>
             {
+                countryFilterState === true  && countryListByName.length === 0  
+                ? 
+                <Country404 /> 
+                :
                 CountryList.map(({ name, flag, population, region, capital }) => {
                     return(
                         <Country 

@@ -13,11 +13,13 @@ const CountryActionStyled = styled.div`
 `;
 
 const CountryAction = () => {
+
     const [country, setCountry] = useState({
         countryName:'',
         countryRegion:'',
+        countryFilter: false,
     })
-    
+
     const dispatch = useDispatch()
 
     const {countryName, countryRegion} = country
@@ -34,7 +36,8 @@ const CountryAction = () => {
     const onChangeCountry = (e) => {
         setCountry({
             ...country,
-            [e.target.name] : e.target.value
+            [e.target.name] : e.target.value,
+            countryFilter: true
         })
     }
     return (
