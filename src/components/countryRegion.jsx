@@ -11,7 +11,7 @@ const CountryRegionStyled = styled.select`
 const CountryRegion = ({...props}) => {
     return (
         <CountryRegionStyled {...props}>
-            <option value="America">America</option>
+            <option value="Americas">America</option>
             <option value="Asia">Asia</option>
             <option value="Oceania">Oceania</option>
             <option value="Europe">Europa</option>

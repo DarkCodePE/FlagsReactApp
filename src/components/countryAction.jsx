@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import {showCountryListFilterName, showCountryListFilterRegion } from '../actions/countryAction';
@@ -13,19 +13,34 @@ const CountryActionStyled = styled.div`
 `;
 
 const CountryAction = () => {
+    const [country, setCountry] = useState({
+        countryName:'',
+        countryRegion:'',
+    })
+    
     const dispatch = useDispatch()
 
-    const onChangeCountry = (e) => {
-        dispatch( showCountryListFilterName(e.target.value) ) 
-    }
+    const {countryName, countryRegion} = country
 
-    const onChangeRegion = (e) => {
-        dispatch( showCountryListFilterRegion(e.target.value) )
+    useEffect(() => {
+        if(countryName != ''){
+            dispatch( showCountryListFilterName(country) ) 
+        }
+        if(countryRegion != ''){
+            dispatch( showCountryListFilterRegion(country) ) 
+        } 
+    }, [country])
+
+    const onChangeCountry = (e) => {
+        setCountry({
+            ...country,
+            [e.target.name] : e.target.value
+        })
     }
     return (
         <CountryActionStyled>
             <CountrySearch placeholder="Search for a country" name="countryName" onChange={onChangeCountry} />
-            <CountryRegion name="countryRegion" onChange={onChangeRegion} />
+            <CountryRegion name="countryRegion" onChange={onChangeCountry} />
         </CountryActionStyled>
     );
 }

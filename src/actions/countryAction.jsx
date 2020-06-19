@@ -12,9 +12,10 @@ const setCountryList = (data) => ({
 })
 
 export function showCountryListFilterName(country){
+    //console.log(country);
     return (dispatch) => {
         dispatch( setCountryListFilterName(country) )
-    }
+    } 
 }
 const setCountryListFilterName = (country) => ({
     type:COUNTRY_LIST_BY_NAME,

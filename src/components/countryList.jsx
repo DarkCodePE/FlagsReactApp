@@ -14,7 +14,8 @@ const CountryListStyled = styled.div`
 function CountryList() {
 
     const countryListByName = useSelector(state => state.country.countryListByName)
-
+    console.log(countryListByName)
+    
     const CountryList = useSelector((state) =>{
         if(countryListByName.length > 0){
             return state.country.countryListByName
