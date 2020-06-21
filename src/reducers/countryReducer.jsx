@@ -1,4 +1,8 @@
-import { COUNTRY_LIST, COUNTRY_LIST_BY_NAME, COUNTRY_LIST_BY_REGION } from "../types";
+import { COUNTRY_LIST, 
+    COUNTRY_LIST_BY_NAME, 
+    COUNTRY_LIST_BY_REGION,
+    COUNTRY_DETAILS
+} from "../types";
 
 const initialState = {
     countryListByName:[],
@@ -30,7 +34,12 @@ export default function(state = initialState, action) {
                 countryListByName: state.countryList.filter( 
                     country => action.payload.countryName == '' ? action.payload.countryRegion.toLowerCase() === country.region.toLowerCase() : country.name.toLowerCase().includes(action.payload.countryName.toLowerCase()) && action.payload.countryRegion.toLowerCase() === country.region.toLowerCase()
                 ),
-            }  
+            }
+        case COUNTRY_DETAILS:
+                return {
+                    ...state, 
+                    countryListByName: action.payload
+                }
         default:
             return state;
     }

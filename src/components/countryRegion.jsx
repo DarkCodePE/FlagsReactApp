@@ -6,6 +6,8 @@ const CountryRegionStyled = styled.select`
     border: none;
     box-shadow: 0 2px 9px 0 rgba(0, 0, 0, .05);
     outline: 0;
+    background: var(--white);
+    color: var(--black);
 `;
 
 const CountryRegion = ({...props}) => {

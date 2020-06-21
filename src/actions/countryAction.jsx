@@ -1,4 +1,8 @@
-const { COUNTRY_LIST, COUNTRY_LIST_BY_NAME, COUNTRY_LIST_BY_REGION } = require("../types");
+const { COUNTRY_LIST, 
+    COUNTRY_LIST_BY_NAME, 
+    COUNTRY_LIST_BY_REGION,
+    COUNTRY_DETAILS
+} = require("../types");
 
 export function showCountryList(data){
     return (dispatch) => {
@@ -8,6 +12,17 @@ export function showCountryList(data){
 
 const setCountryList = (data) => ({
     type:COUNTRY_LIST,
+    payload: data
+})
+
+export function showCountryDetails(data){
+    return (dispatch) => {
+        dispatch( setCountryDetails(data) )
+    }
+}
+
+const setCountryDetails = (data) => ({
+    type:COUNTRY_DETAILS,
     payload: data
 })
 

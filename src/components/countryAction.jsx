@@ -6,10 +6,15 @@ import CountrySearch from './countrySearch';
 import CountryRegion from './countryRegion';
 
 const CountryActionStyled = styled.div`
+    /* max-width: 1282px; */
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-row-gap: 40px;
-    padding: 0 1rem;
+    padding: 2em 2em 1em;
+    @media screen and (min-width: 768px) {
+        grid-template-columns: 480px 200px;
+        justify-content:space-between;
+    }
 `;
 
 const CountryAction = () => {
